@@ -4,6 +4,8 @@ import { mergeGraphQLSchemas, mergeResolvers } from '@graphql-modules/epoxy';
 
 export const createSchema = () =>
   makeExecutableSchema({
-    typeDefs: mergeGraphQLSchemas(loadSchemaFiles(__dirname + '/modules/')),
+    typeDefs: mergeGraphQLSchemas(
+      loadSchemaFiles(__dirname + '/modules/', { extensions: ['graphql'] })
+    ),
     resolvers: mergeResolvers(loadResolversFiles(__dirname + '/modules/'))
   });
