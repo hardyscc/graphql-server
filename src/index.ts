@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import * as express from 'express';
+import express from 'express';
 import { ApolloServer } from 'apollo-server-express';
 import { createTypeormConn } from './createTypeormConn';
 import { createSchema } from './createSchema';
@@ -7,7 +7,9 @@ import { createSchema } from './createSchema';
 const startServer = async () => {
   await createTypeormConn();
 
-  const server = new ApolloServer({ schema: createSchema() });
+  const server = new ApolloServer({
+    schema: createSchema()
+  });
 
   const app = express();
   server.applyMiddleware({ app });
